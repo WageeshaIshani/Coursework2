@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.cwk2">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +19,9 @@
         </activity>
         <activity android:name=".HomePageActivity" />
         <activity android:name=".EmpListActivity" />
-        <activity android:name=".AddEmployeeActivity"></activity>
+        <activity android:name=".AddEmployeeActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ViewEmpActivity"></activity>
     </application>
 
 </manifest>
