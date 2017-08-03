@@ -21,7 +21,7 @@
         <activity android:name=".EmpListActivity" />
         <activity android:name=".AddEmployeeActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ViewEmpActivity"></activity>
+        <activity android:name=".DeleteEmpActivity"></activity>
     </application>
 
 </manifest>

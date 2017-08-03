@@ -12,65 +12,73 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //firebase auth object
+
     private FirebaseAuth firebaseAuth;
 
-    //view objects
+
     private TextView textViewUserEmail;
     private Button buttonLogout;
-    private Button viewButton;
     private Button addButton;
+    private Button viewbt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        //initializing firebase authentication object
+
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //if the user is not logged in
-        //that means current user will return null
         if (firebaseAuth.getCurrentUser() == null) {
-            //closing this activity
+
             finish();
-            //starting login activity
+
             startActivity(new Intent(this, LoginActivity.class));
         }
-        //getting current user
+
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        //initializing views
+
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
-        viewButton = (Button) findViewById(R.id.viewButton);
         addButton = (Button) findViewById(R.id.addButton);
+        viewbt = (Button) findViewById(R.id.viewbt);
 
-        //displaying logged in user name
+
         textViewUserEmail.setText("Welcome " + user.getEmail());
 
-        //adding listener to button
+
         buttonLogout.setOnClickListener(this);
+        addButton.setOnClickListener(this);
+        viewbt.setOnClickListener(this);
+
+
 
 
     }
 
     @Override
     public void onClick(View v) {
-        //if logout is pressed
+
         if (v == buttonLogout) {
-            //logging out the user
+
             firebaseAuth.signOut();
-            //closing activity
+
             finish();
-            //starting login activity
+
             startActivity(new Intent(this, LoginActivity.class));
+
         }else if(v == addButton ){
+
+                finish();
+                startActivity(new Intent(this, AddEmployeeActivity.class));
+           }
+        else if(v == viewbt ){
+
             finish();
-            startActivity(new Intent(this, AddEmployeeActivity.class));
-        }else if(v == viewButton ){
-            finish();
-            startActivity(new Intent(this, ViewEmpActivity.class));
+            startActivity(new Intent(this, EmpListActivity.class));
         }
+
+
     }
 }
